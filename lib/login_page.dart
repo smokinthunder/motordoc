@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -8,11 +9,11 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  bool darkMode = false;
-  bool showPassword = false;
+      bool darkMode = false;
 
   @override
   Widget build(BuildContext context) {
+    
     return SafeArea(
       child: Scaffold(
           body: Stack(
@@ -53,15 +54,13 @@ class _LoginPageState extends State<LoginPage> {
                       border: Border.all(
                         color: Colors.black,
                       ),
-                      boxShadow: darkMode
-                          ? []
-                          : [
-                              BoxShadow(
-                                color: Colors.grey.withOpacity(0.5),
-                                blurRadius: 4,
-                                offset: const Offset(4, 4),
-                              ),
-                            ]),
+                       boxShadow: darkMode? []: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.5),
+                          blurRadius: 4,
+                          offset: const Offset(4, 4),
+                        ),
+                      ]),
                   child: const TextField(
                     decoration: InputDecoration(
                       border: InputBorder.none,
@@ -80,18 +79,17 @@ class _LoginPageState extends State<LoginPage> {
                       color: Colors.black,
                     ),
                     color: Colors.white,
-                    boxShadow: darkMode
-                        ? []
-                        : [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.5),
-                              blurRadius: 4,
-                              offset: const Offset(4, 4),
-                            ),
-                          ],
+                    boxShadow: darkMode? []: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.5),
+                        blurRadius: 4,
+                        offset: const Offset(4, 4),
+                      ),
+                    ],
                   ),
                   child: const TextField(
                     obscureText: true,
+                    
                     decoration: InputDecoration(
                       border: InputBorder.none,
                       hintText: 'Password',
@@ -165,3 +163,5 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 }
+
+
