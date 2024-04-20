@@ -1,21 +1,26 @@
 import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_ui_auth/firebase_ui_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:motor_doc/firebase_options.dart';
 import 'package:motor_doc/home_page.dart';
 import 'package:motor_doc/login_page.dart';
 import 'package:motor_doc/signup_page.dart';
 import 'package:motor_doc/themes.dart';
 
+/// The main entry point of the Motor Doc application.
+///
+/// This class initializes the Flutter app and Firebase, and sets up the
+/// MaterialApp with the appropriate themes and routes.
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+  WidgetsFlutterBinding.ensureInitialized(); // Ensure that the Flutter app initializes properly
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   ); // Initialize Firebase
   runApp(const MyApp());
 }
 
+/// The root widget of the Motor Doc application.
+///
+/// This widget sets up the MaterialApp with the appropriate themes and routes.
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -31,7 +36,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/login': (context) => const LoginPage(),
         '/home': (context) => const HomePage(),
-        '/signup': (context) =>  SignupPage(),
+        '/signup': (context) =>  const SignupPage(),
       },
     );
   }

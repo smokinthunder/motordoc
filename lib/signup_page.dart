@@ -1,15 +1,22 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class SignupPage extends StatefulWidget {
+  const SignupPage({super.key});
+
   @override
-  _SignupPageState createState() => _SignupPageState();
+  State<SignupPage> createState() => _SignupPageState();
 }
 
 class _SignupPageState extends State<SignupPage> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
+
   final TextEditingController _usernameController = TextEditingController();
+
   final TextEditingController _emailController = TextEditingController();
+
   final TextEditingController _passwordController = TextEditingController();
 
   @override
@@ -44,8 +51,22 @@ class _SignupPageState extends State<SignupPage> {
             const SizedBox(height: 16.0),
             ElevatedButton(
               onPressed: () {
-                _signup();
-                Navigator.pushNamed(context, '/home');
+                _signup().then((user) {
+                  if (user != null) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('Sign up successful'),
+                      ),
+                    );
+                    Navigator.pushNamed(context, '/home');
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('Sign up failed'),
+                      ),
+                    );
+                  }
+                }); 
               },
               child: const Text('Sign Up'),
             ),
