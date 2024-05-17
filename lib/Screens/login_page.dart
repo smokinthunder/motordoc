@@ -1,8 +1,7 @@
-// ignore_for_file: avoid_print
-
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/widgets.dart';
+
+import '../Widgets/login_text_box.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -12,7 +11,6 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  bool showPassword = false;
   String email = '';
   String password = '';
   @override
@@ -20,7 +18,7 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       body: Stack(
         children: [
-          Container(
+          SizedBox(
             height: double.infinity,
             width: double.infinity,
             child: Image.asset(
@@ -47,84 +45,17 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                       ],
                     ),
-                    Container(
-                      height: 50,
-                      width: 320,
-                      padding: const EdgeInsets.only(left: 20),
-                      margin: const EdgeInsets.all(20),
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(15),
-                          border: Border.all(
-                            color: Colors.black,
-                          ),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.5),
-                              blurRadius: 4,
-                              offset: const Offset(4, 4),
-                            ),
-                          ]),
-                      child: TextField(
-                        onChanged: (value) {
+                    const SizedBox(height: 20),
+                    LoginTextBox(
+                        hintText: 'Email',
+                        whenChanged: (value) {
                           email = value;
-                        },
-                        style: const TextStyle(
-                          color: Colors.black,
-                        ),
-                        decoration: const InputDecoration(
-                          border: InputBorder.none,
-                          hintText: 'Email',
-                        ),
-                      ),
-                    ),
-                    Container(
-                      height: 50,
-                      width: 320,
-                      padding: const EdgeInsets.only(left: 20),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15),
-                        border: Border.all(
-                          color: Colors.black,
-                        ),
-                        color: Colors.white,
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            blurRadius: 4,
-                            offset: const Offset(4, 4),
-                          ),
-                        ],
-                      ),
-                      child: TextField(
-                        onChanged: (value) {
+                        }),
+                    LoginTextBox(
+                        hintText: 'Password',
+                        whenChanged: (value) {
                           password = value;
-                        },
-                        obscureText: showPassword,
-                        style: const TextStyle(
-                          color: Colors.black,
-                        ),
-                        decoration: InputDecoration(
-                          border: InputBorder.none,
-                          hintText: 'Password',
-                          suffixIcon: InkWell(
-                            child: Icon(showPassword
-                                ? Icons.visibility
-                                : Icons.visibility_off),
-                            onTap: () {
-                              setState(() {
-                                showPassword = !showPassword;
-                              });
-                            },
-                          ),
-                        ),
-                      ),
-                    ),
-                    // TextBox(
-                    //     hintText: 'username',
-                    //     onChanged: (value) {
-                    //       email = value;
-                    //     }),
+                        }),
                     Container(
                       margin: const EdgeInsets.only(top: 15, right: 50),
                       alignment: Alignment.centerRight,
@@ -161,9 +92,9 @@ class _LoginPageState extends State<LoginPage> {
                             color: const Color(0xFFA70018),
                             boxShadow: const [
                               BoxShadow(
-                                blurRadius:2,          
+                                blurRadius: 2,
                                 color: Color(0xFF540000),
-                                offset: Offset(0, 4), 
+                                offset: Offset(0, 4),
                                 spreadRadius: 2,
                               )
                             ]),
@@ -234,65 +165,3 @@ Future<User?> signInWithEmailAndPassword(String email, String password) async {
     return null;
   }
 }
-
-// class TextBox extends StatefulWidget {
-//   final String hintText;
-//   final Function onChanged;
-//   final bool ifpassword = false;
-//   bool showPassword = false;
-//   TextBox({
-//     super.key,
-//     required this.hintText,
-//     required this.onChanged,
-//   });
-
-//   @override
-//   State<TextBox> createState() => _TextBoxState();
-// }
-
-// class _TextBoxState extends State<TextBox> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container(
-//       height: 50,
-//       width: 320,
-//       padding: const EdgeInsets.only(left: 20),
-//       margin: const EdgeInsets.all(20),
-//       decoration: BoxDecoration(
-//           color: Colors.white,
-//           borderRadius: BorderRadius.circular(15),
-//           border: Border.all(
-//             color: Colors.black,
-//           ),
-//           boxShadow: [
-//             BoxShadow(
-//               color: Colors.grey.withOpacity(0.5),
-//               blurRadius: 4,
-//               offset: const Offset(4, 4),
-//             ),
-//           ]),
-//       child: TextField(
-//         onChanged: widget.onChanged(),
-//         style: const TextStyle(
-//           color: Colors.black,
-//         ),
-//         decoration: InputDecoration(
-//           border: InputBorder.none,
-//           hintText: widget.hintText,
-//           suffixIcon: widget.ifpassword
-//               ? InkWell(
-//                   child: Icon(widget.showPassword
-//                       ? Icons.visibility
-//                       : Icons.visibility_off),
-//                   onTap: () {
-//                     setState(() {
-//                       widget.showPassword = !widget.showPassword;
-//                     });
-//                   },
-//                 )
-//               : null,
-//         ),
-//       ),
-//     );
-//   }
-// }

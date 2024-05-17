@@ -14,9 +14,15 @@ class HomePage extends StatelessWidget {
               "Home Page",
               style: Theme.of(context).textTheme.headlineLarge,
             ),
-            MaterialButton(onPressed: () {
-              Navigator.pushNamed(context, '/login');
-            }, child: Text("Logout",style: Theme.of(context).textTheme.bodyLarge,),)
+            MaterialButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/login');
+              },
+              child: Text(
+                "Logout",
+                style: Theme.of(context).textTheme.bodyLarge,
+              ),
+            ),
           ],
         ),
       ),
