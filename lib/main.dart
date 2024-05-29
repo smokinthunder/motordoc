@@ -1,10 +1,11 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:motor_doc/Firebase/firebase_options.dart';
-import 'package:motor_doc/Screens/home_page.dart';
-import 'package:motor_doc/Screens/login_page.dart';
-import 'package:motor_doc/Screens/signup_page.dart';
 import 'package:motor_doc/themes/themes.dart';
+
+import 'Authentication/login_page.dart';
+import 'Authentication/signup_page.dart';
+import 'Screens/home_page.dart';
 
 /// The main entry point of the Motor Doc application.
 ///

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-import '../Widgets/login_text_box.dart';
+import 'login_widgets.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -32,8 +32,6 @@ class _LoginPageState extends State<LoginPage> {
                 Column(
                   children: [
                     const SizedBox(height: 200),
-
-                    // Image.asset('assets/login/logo.png'),
                     Row(
                       children: [
                         const SizedBox(
@@ -65,48 +63,19 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ),
                     InkWell(
-                      onTap: () async {
-                        User? user =
-                            await signInWithEmailAndPassword(email, password);
-                        if (user != null) {
-                          // User signed in successfully
-                          print("User signed in: ${user.uid}");
-                          () {
-                            Navigator.pushNamed(context, '/home');
-                          };
-                        } else {
-                          // Sign-in failed
-                          print("Sign-in failed");
-                        }
-                      },
-                      child: Container(
-                        height: 50,
-                        width: 320,
-                        margin: const EdgeInsets.only(top: 20),
-                        padding: const EdgeInsets.only(
-                          left: 125,
-                          top: 10,
-                        ),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(12),
-                            color: const Color(0xFFA70018),
-                            boxShadow: const [
-                              BoxShadow(
-                                blurRadius: 2,
-                                color: Color(0xFF540000),
-                                offset: Offset(0, 4),
-                                spreadRadius: 2,
-                              )
-                            ]),
-                        child: const Text(
-                          "Login",
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                    ),
+                        onTap: () async {
+                          User? user =
+                              await signInWithEmailAndPassword(email, password);
+                          if (user != null) {
+                            // print("User signed in: ${user.uid}");
+                            () {
+                              Navigator.pushNamed(context, '/home');
+                            };
+                          } else {
+                            // print("Sign-in failed");
+                          }
+                        },
+                        child: LoginSubmitButton(txt: "Login")),
                     Container(
                       margin: const EdgeInsets.only(top: 20),
                       child: Padding(

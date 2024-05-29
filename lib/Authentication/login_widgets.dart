@@ -62,3 +62,37 @@ class _LoginTextBoxState extends State<LoginTextBox> {
     );
   }
 }
+
+class LoginSubmitButton extends StatelessWidget {
+  String txt;
+  LoginSubmitButton({super.key, required this.txt});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 50,
+      width: 320,
+      margin: const EdgeInsets.only(top: 20),
+      padding: const EdgeInsets.only(
+        left: 125,
+        top: 10,
+      ),
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(12),
+          color: const Color(0xFFA70018),
+          boxShadow: const [
+            BoxShadow(
+              blurRadius: 2,
+              color: Color(0xFF540000),
+              offset: Offset(0, 4),
+              spreadRadius: 2,
+            )
+          ]),
+      child: Text(
+        txt,
+        style: const TextStyle(
+            color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
+      ),
+    );
+  }
+}

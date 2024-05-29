@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-import '../Widgets/login_text_box.dart';
+import 'login_widgets.dart';
 
 class SignupPage extends StatefulWidget {
   const SignupPage({super.key});
@@ -69,53 +69,26 @@ class _SignupPageState extends State<SignupPage> {
                         }),
 
                     InkWell(
-                      onTap: () {
-                        _signup().then((user) {
-                          if (user != null) {
-                            user.updateDisplayName(username);
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                content: Text('Sign up successful'),
-                              ),
-                            );
-                            Navigator.pushNamed(context, '/home');
-                          } else {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                content: Text('Sign up failed'),
-                              ),
-                            );
-                          }
-                        });
-                      },
-                      child: Container(
-                        height: 50,
-                        width: 320,
-                        margin: const EdgeInsets.only(top: 20),
-                        padding: const EdgeInsets.only(
-                          left: 125,
-                          top: 10,
-                        ),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(12),
-                            color: const Color(0xFFA70018),
-                            boxShadow: const [
-                              BoxShadow(
-                                blurRadius: 2,
-                                color: Color(0xFF540000),
-                                offset: Offset(0, 4),
-                                spreadRadius: 2,
-                              )
-                            ]),
-                        child: const Text(
-                          "Sign Up",
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                    ),
+                        onTap: () {
+                          _signup().then((user) {
+                            if (user != null) {
+                              user.updateDisplayName(username);
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content: Text('Sign up successful'),
+                                ),
+                              );
+                              Navigator.pushNamed(context, '/home');
+                            } else {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content: Text('Sign up failed'),
+                                ),
+                              );
+                            }
+                          });
+                        },
+                        child: LoginSubmitButton(txt: "Sign Up")),
                     Container(
                       margin: const EdgeInsets.only(top: 20),
                       child: Padding(
