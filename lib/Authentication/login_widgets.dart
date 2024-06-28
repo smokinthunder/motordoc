@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+
 class LoginTextBox extends StatefulWidget {
   final String hintText;
   void Function(String) whenChanged;
