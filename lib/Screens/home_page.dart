@@ -32,12 +32,18 @@ class HomePage extends StatelessWidget {
                     )
                   ],
                 ),
-                Container(
-                  height: 150,
-                  margin: const EdgeInsets.only(top: 30),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Colors.white,
+                InkWell(
+                  onTap: () {
+                    Navigator.pushNamed(context, '/carDetails');
+                  },
+                  child: Container(
+                    height: 150,
+                    child: Image.asset("assets/figma_imports/home/car.png"),
+                    margin: const EdgeInsets.only(top: 30),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: Colors.white,
+                    ),
                   ),
                 ),
                 Container(
@@ -53,16 +59,83 @@ class HomePage extends StatelessWidget {
                 ),
                 Row(
                   children: [
-                    Container(
+                    InkWell(
+                      onTap: () {
+                        Navigator.pushNamed(context, '/serviceCentre');
+                      },
+                      child: Container(
                         width: 150,
                         height: 200,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
                           color: C.darkGreyBox,
-                        )),
+                        ),
+                        child: Column(
+                          children: [
+                            Row(
+                              children: [
+                                Container(
+                                  decoration: const BoxDecoration(
+                                    borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(10),
+                                      bottomRight: Radius.circular(10),
+                                    ),
+                                    color: Colors.white,
+                                  ),
+                                  height: 25,
+                                  width: 51,
+                                  child: const Center(
+                                    child: Row(
+                                      children: [
+                                        Icon(
+                                          Icons.star,
+                                          color: Color(0xFFFBBE21),
+                                          size: 15,
+                                        ),
+                                        Text(
+                                          "4.5",
+                                          style: TextStyle(
+                                            color: Colors.black,
+                                            fontSize: 15,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            const Icon(
+                              CupertinoIcons.car_detailed,
+                              size: 100,
+                              color: Colors.white,
+                            ),
+                            const Text(
+                              "Car Service",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 20,
+                              ),
+                            ),
+                            const Text(
+                              "Service your car",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 15,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
                   ],
                 ),
-                Container(),
+                const Center(
+                  child: Text(
+                    "Chart",
+                    style: TextStyle(color: Colors.white, fontSize: 30),
+                  ),
+                ),
                 Container()
               ],
             ),

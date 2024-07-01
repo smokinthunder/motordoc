@@ -1,7 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:motor_doc/Screens/service_center_details_page.dart';
 
 import 'Firebase/firebase_options.dart';
+import 'Screens/car_details_page.dart';
 import 'themes/themes.dart';
 
 import 'Authentication/login_page.dart';
@@ -34,7 +36,9 @@ class MyApp extends StatelessWidget {
         '/login': (context) => const LoginPage(),
         '/home': (context) => const HomePage(),
         '/signup': (context) => const SignupPage(),
-        '/notification': (context) => const NotificationScreen()
+        '/notification': (context) => const NotificationScreen(),
+        '/carDetails': (context) => const CarDetailsPage(),
+        '/serviceCentre': (context) => const ServiceCenterPage(),
       },
     );
   }

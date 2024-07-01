@@ -28,7 +28,7 @@ flutter:
   assets:
     - assets/login/logo.png
     - assets/login/login_background.png
-
+    - assets/figma_imports/home/car.png
 flutter_launcher_icons:
   android: true
   ios: true
