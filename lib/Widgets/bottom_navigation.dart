@@ -40,23 +40,38 @@ class BottomNavigations extends StatelessWidget {
               ),
             ),
 
-            Icon(
-              bottomNavigationIndex == 3
-                  ? CupertinoIcons.plus_rectangle_fill
-                  : CupertinoIcons.plus_rectangle,
-              color: Colors.white,
+            InkWell(
+              onTap: () {
+                Navigator.pushNamed(context, '/addvehicle');
+              },
+              child: Icon(
+                bottomNavigationIndex == 3
+                    ? CupertinoIcons.plus_rectangle_fill
+                    : CupertinoIcons.plus_rectangle,
+                color: Colors.white,
+              ),
             ),
-            Icon(
-              bottomNavigationIndex == 4
-                  ? CupertinoIcons.location_fill
-                  : CupertinoIcons.location,
-              color: Colors.white,
+            InkWell(
+              onTap: () {
+                Navigator.pushNamed(context, '/trip');
+              },
+              child: Icon(
+                bottomNavigationIndex == 4
+                    ? CupertinoIcons.location_fill
+                    : CupertinoIcons.location,
+                color: Colors.white,
+              ),
             ),
-            Icon(
-              bottomNavigationIndex == 5
-                  ? CupertinoIcons.person_circle_fill
-                  : CupertinoIcons.person_circle,
-              color: Colors.white,
+            InkWell(
+              onTap: () {
+                Navigator.pushNamed(context, '/profile');
+              },
+              child: Icon(
+                bottomNavigationIndex == 5
+                    ? CupertinoIcons.person_circle_fill
+                    : CupertinoIcons.person_circle,
+                color: Colors.white,
+              ),
             ),
           ],
         ),

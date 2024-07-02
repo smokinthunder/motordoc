@@ -43,6 +43,7 @@ flutter:
     - assets/images/island.png
     - assets/images/urban.png
     - assets/images/tundra.jpeg
+    - assets/figma_imports/home/car.png
 
 
   fonts:
@@ -51,7 +52,6 @@ flutter:
         - asset: fonts/Sora-SemiBold.ttf
 
 
-    - assets/figma_imports/home/car.png
 flutter_launcher_icons:
   android: true
   ios: true

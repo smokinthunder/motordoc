@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
       title: 'Motor Doc',
       debugShowCheckedModeBanner: false,
       home: const LoginPage(),
-      initialRoute: '/trip',
+      initialRoute: '/login',
       routes: {
         '/login': (context) => const LoginPage(),
         '/home': (context) => const HomePage(),
