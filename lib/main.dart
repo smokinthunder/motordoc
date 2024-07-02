@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
       title: 'Motor Doc',
       debugShowCheckedModeBanner: false,
       home: const LoginPage(),
-      initialRoute: '/login',
+      initialRoute: '/serviceCenterCategoryPage',
       routes: {
         '/login': (context) => const LoginPage(),
         '/home': (context) => const HomePage(),
@@ -49,7 +49,7 @@ class MyApp extends StatelessWidget {
         '/carDetails': (context) => const CarDetailsPage(),
         '/serviceCentre': (context) => const ServiceCenterPage(),
         '/serviceCenterCategoryPage': (context) =>
-            const ServiceCenterCategoryPage(),
+             ServiceCenterCategoryPage(),
       },
     );
   }
