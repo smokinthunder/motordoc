@@ -16,19 +16,23 @@ class NotificationScreen extends StatelessWidget {
                 fontSize: 30,
                 decoration: TextDecoration.none),
           ),
-          ListView(
-            
-            children: const [
-              BoxNotificationTile(),
-              BoxNotificationTile(),
-              BoxNotificationTile(),
-              BoxNotificationTile(),
-              BoxNotificationTile(),
-              BoxNotificationTile(),
-              BoxNotificationTile(),
-              BoxNotificationTile(),
-              BoxNotificationTile(),
-            ],
+          SizedBox(
+            height: MediaQuery.of(context).size.height -130,
+            width: double.infinity,
+            child: ListView(
+              
+              children: const [
+                BoxNotificationTile(),
+                BoxNotificationTile(),
+                BoxNotificationTile(),
+                BoxNotificationTile(),
+                BoxNotificationTile(),
+                BoxNotificationTile(),
+                BoxNotificationTile(),
+                BoxNotificationTile(),
+                BoxNotificationTile(),
+              ],
+            ),
           ),
         ]),
       ),
