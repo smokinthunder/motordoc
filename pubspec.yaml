@@ -15,10 +15,13 @@ dependencies:
   firebase_core: ^2.25.5
   firebase_auth: ^4.17.6
   firebase_ui_auth: ^1.13.1
+  google_fonts: ^6.2.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
+
 
   flutter_lints: ^3.0.0
 
@@ -28,8 +31,28 @@ flutter:
   assets:
     - assets/login/logo.png
     - assets/login/login_background.png
+    - assets/cover_page_bg.png
+    - assets/images/mountains.png
+    - assets/images/beach.png
+    - assets/images/farmlands.png
+    - assets/images/historic.png
+    - assets/images/jungle.png
+    - assets/images/spa.png
+    - assets/images/desert.png
+    - assets/images/island.png
+    - assets/images/urban.png
+    - assets/images/tundra.jpeg
+
+
+  fonts:
+    - family: Sora
+      fonts:
+        - asset: fonts/Sora-SemiBold.ttf
+
 
 flutter_launcher_icons:
   android: true
   ios: true
   image_path: "assets/login/logo.png"
+
+

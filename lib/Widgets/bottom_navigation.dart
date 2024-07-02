@@ -28,6 +28,7 @@ class BottomNavigations extends StatelessWidget {
                   : CupertinoIcons.wrench,
               color: Colors.white,
             ),
+
             Icon(
               bottomNavigationIndex == 3
                   ? CupertinoIcons.plus_rectangle_fill
