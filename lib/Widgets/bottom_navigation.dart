@@ -16,17 +16,28 @@ class BottomNavigations extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Icon(
-              bottomNavigationIndex == 1
-                  ? CupertinoIcons.house_fill
-                  : CupertinoIcons.house,
-              color: Colors.white,
+            InkWell(
+              onTap: () {
+                Navigator.pushNamed(context, '/home');
+              },
+              child: Icon(
+                
+                bottomNavigationIndex == 1
+                    ? CupertinoIcons.house_fill
+                    : CupertinoIcons.house,
+                color: Colors.white,
+              ),
             ),
-            Icon(
-              bottomNavigationIndex == 2
-                  ? CupertinoIcons.wrench_fill
-                  : CupertinoIcons.wrench,
-              color: Colors.white,
+            InkWell(
+              onTap: () {
+                Navigator.pushNamed(context, '/serviceCenterCategoryPage');
+              },
+              child: Icon(
+                bottomNavigationIndex == 2
+                    ? CupertinoIcons.wrench_fill
+                    : CupertinoIcons.wrench,
+                color: Colors.white,
+              ),
             ),
             Icon(
               bottomNavigationIndex == 3

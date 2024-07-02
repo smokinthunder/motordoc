@@ -1,5 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+// import 'package:get/get.dart';
+// import 'package:motor_doc/Authentication/auth_function.dart';
+import 'package:motor_doc/Screens/service_center_category.dart';
 import 'package:motor_doc/Screens/service_center_details_page.dart';
 
 import 'Firebase/firebase_options.dart';
@@ -31,7 +34,7 @@ class MyApp extends StatelessWidget {
       title: 'Motor Doc',
       debugShowCheckedModeBanner: false,
       home: const LoginPage(),
-      initialRoute: '/home',
+      initialRoute: '/login',
       routes: {
         '/login': (context) => const LoginPage(),
         '/home': (context) => const HomePage(),
@@ -39,6 +42,7 @@ class MyApp extends StatelessWidget {
         '/notification': (context) => const NotificationScreen(),
         '/carDetails': (context) => const CarDetailsPage(),
         '/serviceCentre': (context) => const ServiceCenterPage(),
+        '/serviceCenterCategoryPage': (context) => const ServiceCenterCategoryPage(),
       },
     );
   }

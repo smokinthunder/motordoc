@@ -131,6 +131,8 @@ class _SignupPageState extends State<SignupPage> {
 
   Future<User?> _signup() async {
     try {
+      print("$email,$password");
+
       UserCredential userCredential =
           await _auth.createUserWithEmailAndPassword(
         email: email,

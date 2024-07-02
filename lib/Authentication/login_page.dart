@@ -67,12 +67,10 @@ class _LoginPageState extends State<LoginPage> {
                           User? user =
                               await signInWithEmailAndPassword(email, password);
                           if (user != null) {
-                            // print("User signed in: ${user.uid}");
-                            () {
-                              Navigator.pushNamed(context, '/home');
-                            };
+                            print("User signed in: ${user.uid}");
+                            Navigator.pushNamed(context, '/home');
                           } else {
-                            // print("Sign-in failed");
+                            print("Sign-in failed");
                           }
                         },
                         child: LoginSubmitButton(txt: "Login")),
@@ -121,6 +119,7 @@ class _LoginPageState extends State<LoginPage> {
 Future<User?> signInWithEmailAndPassword(String email, String password) async {
   try {
     // Sign in with email and password
+    print("$email,$password");
     final UserCredential userCredential =
         await FirebaseAuth.instance.signInWithEmailAndPassword(
       email: email,
@@ -128,9 +127,12 @@ Future<User?> signInWithEmailAndPassword(String email, String password) async {
     );
 
     // Return the signed-in user
+    print("Sign In ${userCredential.user}");
     return userCredential.user;
   } catch (error) {
+    print("Error is: ");
     print(error);
+    print(error.hashCode);
     return null;
   }
 }

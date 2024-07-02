@@ -1,8 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:motor_doc/DBInject/dbinject.dart';
+import 'package:motor_doc/Widgets/home_screen_service_tile.dart';
 
 import '../Widgets/bottom_navigation.dart';
-import '../themes/colors.dart';
+// import '../themes/colors.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -38,12 +41,12 @@ class HomePage extends StatelessWidget {
                   },
                   child: Container(
                     height: 150,
-                    child: Image.asset("assets/figma_imports/home/car.png"),
                     margin: const EdgeInsets.only(top: 30),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       color: Colors.white,
                     ),
+                    child: Image.asset("assets/figma_imports/home/car.png"),
                   ),
                 ),
                 Container(
@@ -57,86 +60,46 @@ class HomePage extends StatelessWidget {
                     ),
                   ),
                 ),
-                Row(
-                  children: [
-                    InkWell(
-                      onTap: () {
-                        Navigator.pushNamed(context, '/serviceCentre');
-                      },
-                      child: Container(
-                        width: 150,
-                        height: 200,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: C.darkGreyBox,
+                StreamBuilder(
+                    stream: FirebaseFirestore.instance
+                        .collection('Service Centers').orderBy('Rating', descending: true).limit(20)
+                        .snapshots(),
+                    builder: (context,
+                        AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>>
+                            snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return const Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      }
+                      if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
+                        return const Text('No Service Centers found');
+                      }
+                      return SizedBox(
+                        height: 220,
+                        child: ListView.builder(
+                          scrollDirection: Axis.horizontal,
+
+                          itemCount: snapshot.data!.docs.length,
+                          itemBuilder: (context, index) => ServiceTile(
+                              rating:
+                                  snapshot.data!.docs[index].data()['Rating'].toString(),
+                              headtext:
+                                  snapshot.data!.docs[index].data()['Name'],
+                              subtext:
+                                  snapshot.data!.docs[index].data()['Place']),
                         ),
-                        child: Column(
-                          children: [
-                            Row(
-                              children: [
-                                Container(
-                                  decoration: const BoxDecoration(
-                                    borderRadius: BorderRadius.only(
-                                      topLeft: Radius.circular(10),
-                                      bottomRight: Radius.circular(10),
-                                    ),
-                                    color: Colors.white,
-                                  ),
-                                  height: 25,
-                                  width: 51,
-                                  child: const Center(
-                                    child: Row(
-                                      children: [
-                                        Icon(
-                                          Icons.star,
-                                          color: Color(0xFFFBBE21),
-                                          size: 15,
-                                        ),
-                                        Text(
-                                          "4.5",
-                                          style: TextStyle(
-                                            color: Colors.black,
-                                            fontSize: 15,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            const Icon(
-                              CupertinoIcons.car_detailed,
-                              size: 100,
-                              color: Colors.white,
-                            ),
-                            const Text(
-                              "Car Service",
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 20,
-                              ),
-                            ),
-                            const Text(
-                              "Service your car",
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 15,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+                      );
+                    }),
                 const Center(
                   child: Text(
                     "Chart",
                     style: TextStyle(color: Colors.white, fontSize: 30),
                   ),
                 ),
-                Container()
+                Container(),
+                // const ElevatedButton(
+                //     onPressed: dbinject, child: Text('Inject DB')),
               ],
             ),
           ),
@@ -146,3 +109,4 @@ class HomePage extends StatelessWidget {
     );
   }
 }
+
