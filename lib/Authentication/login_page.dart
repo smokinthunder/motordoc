@@ -51,6 +51,8 @@ class _LoginPageState extends State<LoginPage> {
                         }),
                     LoginTextBox(
                         hintText: 'Password',
+                        ifpassword: true,
+                      
                         whenChanged: (value) {
                           password = value;
                         }),

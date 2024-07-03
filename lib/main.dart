@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:motor_doc/Screens/add_vehicle.dart';
 import 'package:motor_doc/Screens/cover_page.dart';
+import 'package:motor_doc/Screens/profile_page.dart';
 import 'package:motor_doc/Screens/trip_assistance.dart';
 // import 'package:get/get.dart';
 // import 'package:motor_doc/Authentication/auth_function.dart';
@@ -47,6 +48,7 @@ class MyApp extends StatelessWidget {
         '/addvehicle': (context) => const AddVehicle(),
         '/trip': (context) => ImageGridPage(),
         '/carDetails': (context) => const CarDetailsPage(),
+        '/profile': (context) => const ProfilePage(),
         // '/serviceCentre': (context) => const ServiceCenterPage(),
         '/serviceCenterCategoryPage': (context) => ServiceCenterCategoryPage(),
         // '/serviceCenterPage': (context) => const ServiceCenterPage(),

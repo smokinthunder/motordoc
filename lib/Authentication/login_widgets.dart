@@ -39,6 +39,7 @@ class _LoginTextBoxState extends State<LoginTextBox> {
             ),
           ]),
       child: TextField(
+        obscureText: widget.ifpassword ? !widget.showPassword : false,
         onChanged: (value) => widget.whenChanged(value),
         style: const TextStyle(
           color: Colors.black,

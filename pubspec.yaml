@@ -20,14 +20,18 @@ dependencies:
   image_picker: ^1.1.2
   firebase_storage: ^11.7.7
   swipe_cards: ^2.0.0+1
+  flutter_launcher_icons: ^0.13.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  
 
 
 
   flutter_lints: ^3.0.0
+  # flutter_launcher_icons: ^0.13.1
+
 
 flutter:
   uses-material-design: true
@@ -53,6 +57,7 @@ flutter:
     - assets/categories/image4.png
     - assets/categories/image5.png
     - assets/categories/image7.png
+    - assets/chart.png
 
 
 
@@ -63,8 +68,10 @@ flutter:
 
 
 flutter_launcher_icons:
-  android: true
+  android: "launcher_icon"
   ios: true
-  image_path: "assets/login/logo.png"
+  image_path: "assets/categories/image5.png"
+  min_sdk_android: 21 # android min sdk min:16, default 21
+
 
 

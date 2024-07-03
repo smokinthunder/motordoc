@@ -64,6 +64,7 @@ class _SignupPageState extends State<SignupPage> {
                         }),
                     LoginTextBox(
                         hintText: 'Password',
+                        ifpassword: true,
                         whenChanged: (value) {
                           password = value;
                         }),

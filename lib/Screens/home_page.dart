@@ -41,7 +41,7 @@ class HomePage extends StatelessWidget {
                         (context,
                         AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>>
                         snapshot) {
-                          
+
                       if (snapshot.connectionState == ConnectionState.waiting) {
                         return const Center(
                           child: CircularProgressIndicator(),
@@ -124,7 +124,8 @@ class HomePage extends StatelessWidget {
                     style: TextStyle(color: Colors.white, fontSize: 30),
                   ),
                 ),
-                Container(),
+
+                Image.asset('assets/chart.png', fit: BoxFit.cover, height: 150, width: 150,),
                 // const ElevatedButton(
                 //     onPressed: dbinject, child: Text('Inject DB')),
               ],
