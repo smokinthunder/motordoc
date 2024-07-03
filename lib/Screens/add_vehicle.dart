@@ -146,6 +146,7 @@ class _AddVehicleState extends State<AddVehicle> {
                 ElevatedButton(
                   onPressed: () {
                     // Handle form submission
+
                     Vehicle(
                       vehicleName: _vehicleNameController.text,
                       vehicleNumber: _vehicleNumberController.text,
@@ -153,6 +154,7 @@ class _AddVehicleState extends State<AddVehicle> {
                       ageOfVehicle: _ageOfVehicleController.text,
                       vehicleImageUrl: vehicleImageUrl ?? '',
                     );
+                    Navigator.pushNamed(context, '/home');
                   },
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all<Color>(

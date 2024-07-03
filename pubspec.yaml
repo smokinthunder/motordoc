@@ -19,6 +19,7 @@ dependencies:
   cloud_firestore: ^4.17.5
   image_picker: ^1.1.2
   firebase_storage: ^11.7.7
+  swipe_cards: ^2.0.0+1
 
 dev_dependencies:
   flutter_test:
@@ -46,6 +47,13 @@ flutter:
     - assets/images/urban.png
     - assets/images/tundra.jpeg
     - assets/figma_imports/home/car.png
+    - assets/categories/image1.png
+    - assets/categories/image2.png
+    - assets/categories/image3.png
+    - assets/categories/image4.png
+    - assets/categories/image5.png
+    - assets/categories/image7.png
+
 
 
   fonts:
