@@ -29,7 +29,7 @@ class ProfilePage extends StatelessWidget {
                             fontSize: 40,
                             decoration: TextDecoration.none),
                       ),
-                      IconButton(onPressed: (){Navigator.pushNamed(context, '/login');}, icon: Icon(Icons.logout, color: Colors.white,))
+                      IconButton(onPressed: (){Navigator.pushNamed(context, '/cover');}, icon: Icon(Icons.logout, color: Colors.white,))
                     ],
                   ),
                   const SizedBox(height: 40),

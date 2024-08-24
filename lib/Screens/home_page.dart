@@ -5,6 +5,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:swipe_cards/swipe_cards.dart';
 import 'package:motor_doc/Widgets/home_screen_service_tile.dart';
 import '../Widgets/bottom_navigation.dart';
+import 'service_center_details_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -34,41 +35,46 @@ class HomePage extends StatelessWidget {
                     )
                   ],
                 ),
-                
-                StreamBuilder(stream: FirebaseFirestore.instance
-                        .collection('Vehicle').where('Owner', isEqualTo: FirebaseAuth.instance.currentUser!.uid)
-                        .snapshots() , builder: 
-                        (context,
-                        AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>>
-                        snapshot) {
 
+                StreamBuilder(
+                    stream: FirebaseFirestore.instance
+                        .collection('Vehicle')
+                        .where('Owner',
+                            isEqualTo: FirebaseAuth.instance.currentUser!.uid)
+                        .snapshots(),
+                    builder: (context,
+                        AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>>
+                            snapshot) {
                       if (snapshot.connectionState == ConnectionState.waiting) {
                         return const Center(
                           child: CircularProgressIndicator(),
                         );
                       }
                       if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
-                        return const Text('No Service Centers found', style: TextStyle(color: Colors.white));
+                        return const Text('No Service Centers found',
+                            style: TextStyle(color: Colors.white));
                       }
                       return SizedBox(
                         height: 150,
                         child: InkWell(
-                  onTap: () {
-                    Navigator.pushNamed(context, '/carDetails');
-                  },
-                  child: Container(
-                    height: 150,
-                    margin: const EdgeInsets.only(top: 20),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: Colors.white,
-                    ),
-                    child: 
-                    Image.network(snapshot.data!.docs[0].data()['Image'], fit: BoxFit.cover,),
-                  ),
-                ),
-                      );}
+                          onTap: () {
+                            Navigator.pushNamed(context, '/carDetails');
+                          },
+                          child: Container(
+                            height: 150,
+                            margin: const EdgeInsets.only(top: 20),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              color: Colors.white,
+                            ),
+                            child: Image.network(
+                              snapshot.data!.docs[0].data()['Image'],
+                              fit: BoxFit.cover,
+                            ),
+                          ),
                         ),
+                      );
+                    }),
 
                 Container(
                   width: double.infinity,
@@ -83,13 +89,14 @@ class HomePage extends StatelessWidget {
                 ),
                 StreamBuilder(
                     stream: FirebaseFirestore.instance
-                        .collection('Service Centers')
-                        .orderBy('Rating', descending: true)
+                        .collection('Service Centers').where('Place', isEqualTo: 'Ernakulam')
+                        // .orderBy('Rating', descending: true)
+                        
                         .limit(20)
                         .snapshots(),
                     builder: (context,
                         AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>>
-                        snapshot) {
+                            snapshot) {
                       if (snapshot.connectionState == ConnectionState.waiting) {
                         return const Center(
                           child: CircularProgressIndicator(),
@@ -103,15 +110,33 @@ class HomePage extends StatelessWidget {
                         child: ListView.builder(
                           scrollDirection: Axis.horizontal,
                           itemCount: snapshot.data!.docs.length,
-                          itemBuilder: (context, index) => ServiceTile(
-                            rating: snapshot.data!.docs[index]
-                                .data()['Rating']
-                                .toString(),
-                            headtext:
-                            snapshot.data!.docs[index].data()['Name'],
-                            subtext:
-                            snapshot.data!.docs[index].data()['Place'],
-                          ),
+                          itemBuilder: (context, index)  {
+                            return InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => ServiceCenterPage(
+                                            name: snapshot.data!.docs[index]
+                                                ['Name'],
+                                            place: snapshot.data!.docs[index]
+                                                ['Place'],
+                                            phone: snapshot.data!.docs[index]
+                                                ['Contact Number'],
+                                            services: snapshot.data!.docs[index]
+                                                ['Category'],
+                                          )));
+                            },
+                            child: ServiceTile(
+                              rating: snapshot.data!.docs[index]
+                                  .data()['Rating']
+                                  .toString(),
+                              headtext:
+                                  snapshot.data!.docs[index].data()['Name'],
+                              subtext:
+                                  snapshot.data!.docs[index].data()['Place'],
+                            ),
+                          );}
                         ),
                       );
                     }),
@@ -125,7 +150,12 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
 
-                Image.asset('assets/chart.png', fit: BoxFit.cover, height: 150, width: 150,),
+                Image.asset(
+                  'assets/chart.png',
+                  fit: BoxFit.cover,
+                  height: 150,
+                  width: 150,
+                ),
                 // const ElevatedButton(
                 //     onPressed: dbinject, child: Text('Inject DB')),
               ],
